@@ -13,27 +13,30 @@ import stelmach.bartosz.service.MoveService;
 @RestController
 
 public class ChessController {
-    @Autowired
-    GameCreator gameCreator;
 
-    @Autowired
-    GameService gameService;
+	@Autowired
+	GameCreator gameCreator;
 
-    @Autowired
-    MoveService moveService;
+	@Autowired
+	GameService gameService;
 
-    @PostMapping("/start")
-    public Game startGame(@RequestParam String firstPlayerName, @RequestParam String secondPlayerName, @RequestParam boolean areColoursRandom) {
-        return gameCreator.createGame(firstPlayerName, secondPlayerName, areColoursRandom);
-    }
+	@Autowired
+	MoveService moveService;
 
-    @GetMapping("/getGame")
-    public Game getGame(@RequestParam int id) {
-        return gameService.getGame(id);
-    }
+	@PostMapping("/start")
+	public Game startGame(@RequestParam String firstPlayerName, @RequestParam String secondPlayerName,
+			@RequestParam boolean areColoursRandom) {
+		return gameCreator.createGame(firstPlayerName, secondPlayerName, areColoursRandom);
+	}
 
-    @PostMapping("/playMove")
-    public void playMove(@RequestParam int id, @RequestParam String colour, @RequestParam String move) {
-        moveService.playMove(id, colour, move);
-    }
+	@GetMapping("/getGame")
+	public Game getGame(@RequestParam int id) {
+		return gameService.getGame(id);
+	}
+
+	@PostMapping("/playMove")
+	public void playMove(@RequestParam int id, @RequestParam String colour, @RequestParam String move) {
+		moveService.playMove(id, colour, move);
+	}
+
 }

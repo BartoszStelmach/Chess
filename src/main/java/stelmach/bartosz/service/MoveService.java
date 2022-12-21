@@ -10,14 +10,17 @@ import stelmach.bartosz.repository.MoveRepository;
 
 @Service
 public class MoveService {
-    @Autowired
-    MoveRepository moveRepository;
-    @Autowired
-    GameRepository gameRepository;
 
-    public void playMove(int id, String colour, String move) {
-        Game game = gameRepository.getReferenceById(id);
-        MovePlaceholder movePlaceholder = new MovePlaceholder(game, move);
-        moveRepository.save(movePlaceholder);
-    }
+	@Autowired
+	MoveRepository moveRepository;
+
+	@Autowired
+	GameRepository gameRepository;
+
+	public void playMove(int id, String colour, String move) {
+		Game game = gameRepository.getReferenceById(id);
+		MovePlaceholder movePlaceholder = new MovePlaceholder(game, move);
+		moveRepository.save(movePlaceholder);
+	}
+
 }

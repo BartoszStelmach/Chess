@@ -9,5 +9,7 @@ import java.util.List;
 
 @Repository
 public interface MoveRepository extends JpaRepository<MovePlaceholder, Integer> {
-    List<MovePlaceholder> findByGame(Game game);
+
+	List<MovePlaceholder> findByGame(Game game);
+
 }

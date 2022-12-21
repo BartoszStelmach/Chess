@@ -8,9 +8,16 @@ import stelmach.bartosz.enums.File;
 import stelmach.bartosz.enums.Piece;
 import stelmach.bartosz.enums.Rank;
 
-@AllArgsConstructor @Getter @Setter @ToString
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Square {
-    private Rank rank;
-    private File file;
-    private Piece piece;
+
+	private Rank rank;
+
+	private File file;
+
+	private Piece piece;
+
 }

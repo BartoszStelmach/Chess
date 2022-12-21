@@ -7,16 +7,19 @@ import stelmach.bartosz.repository.GameRepository;
 
 @Service
 public class GameCreator {
-    @Autowired
-    private GameRepository gameRepository;
-    public Game createGame(String firstPlayerName, String secondPlayerName, boolean areColoursRandom) {
-        Game game = new Game(firstPlayerName, secondPlayerName);
-        gameRepository.save(game);
-        return game;
 
-//        if (!areColoursRandom) {
-//
-//        }
-//        else return null;
-    }
+	@Autowired
+	private GameRepository gameRepository;
+
+	public Game createGame(String firstPlayerName, String secondPlayerName, boolean areColoursRandom) {
+		Game game = new Game(firstPlayerName, secondPlayerName);
+		gameRepository.save(game);
+		return game;
+
+		// if (!areColoursRandom) {
+		//
+		// }
+		// else return null;
+	}
+
 }

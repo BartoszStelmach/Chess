@@ -6,4 +6,5 @@ import stelmach.bartosz.entity.Game;
 
 @Repository
 public interface GameRepository extends JpaRepository<Game, Integer> {
+
 }

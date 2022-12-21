@@ -36,3 +36,19 @@ Tests (Cucumber?)
 Git  
 Java 8?  
 Gradle
+
+
+## Docker
+cd C:\Users\Gosu\IdeaProjects\docker\Chess
+dir
+docker build --tag java-docker .
+docker images
+docker run --publish 8080:8080 java-docker
+docker run -d -p 8080:8080 java-docker
+
+docker volume create mysql_data
+docker volume create mysql_config
+docker network create mysqlnet
+
+docker run -it --rm  -v mysql_data:/var/lib/mysql -v mysql_config:/etc/mysql/conf.d --network mysqlnet --name mysqlserver -e MYSQL_USER=user -e MYSQL_PASSWORD=password -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=chess -p 3307:3306 mysql:8.0
+docker run --rm --name springboot-server --network mysqlnet -e MYSQL_URL=jdbc:mysql://mysqlserver/chess -p 8080:8080 java-docker

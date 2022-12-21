@@ -12,18 +12,20 @@ import java.util.stream.Collectors;
 
 @Service
 public class GameService {
-    @Autowired
-    MoveRepository moveRepository;
-    @Autowired
-    GameRepository gameRepository;
 
-    public Game getGame(int id) {
-        Game game = gameRepository.findById(id).get();
-        List<MovePlaceholder> movePlaceholderList = moveRepository.findByGame(game);
-        List<String> moves = movePlaceholderList.stream()
-                .map(MovePlaceholder::getNotation)
-                .collect(Collectors.toList());
-        game.setMoves(moves);
-        return game;
-    }
+	@Autowired
+	MoveRepository moveRepository;
+
+	@Autowired
+	GameRepository gameRepository;
+
+	public Game getGame(int id) {
+		Game game = gameRepository.findById(id).get();
+		List<MovePlaceholder> movePlaceholderList = moveRepository.findByGame(game);
+		List<String> moves = movePlaceholderList.stream().map(MovePlaceholder::getNotation)
+				.collect(Collectors.toList());
+		game.setMoves(moves);
+		return game;
+	}
+
 }
